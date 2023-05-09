@@ -19348,11 +19348,11 @@ function BeeSwarmSimulator(DATA){
             cost:['850000 honey']
         },
 
-        honeyDipper:{
+        hhoneyDipper:{
             
             collectPattern:[[-4,0],[-3,-2],[-3,-1],[-3,0],[-3,1],[-3,2],[-2,-3],[-2,-2],[-2,-1],[-2,0],[-2,1],[-2,2],[-2,3],[-1,-3],[-1,-2],[-1,-1],[-1,0],[-1,1],[-1,2],[-1,3],[0,-4],[0,-3],[0,-2],[0,-1],[0,0],[0,1],[0,2],[0,3],[0,4],[1,-3],[1,-2],[1,-1],[1,0],[1,1],[1,2],[1,3],[2,-3],[2,-2],[2,-1],[2,0],[2,1],[2,2],[2,3],[3,-2],[3,-1],[3,0],[3,1],[3,2],[4,0]],
-            collectAmount:2,
-            cooldown:0.8,
+            collectAmount:20000,
+            cooldown:0.008,
             mesh:function(box,cylinder,sphere,star){
                 
                 box(-0.3,0.3,0.4,0.125,1.3,0.125,false,[1,0.7,0.4])
@@ -19364,7 +19364,7 @@ function BeeSwarmSimulator(DATA){
 
             },
             desc:'A giant honey dipper.<br><br>Collects 2 pollen from 49 flowers every 0.8s.',
-            cost:['1500000 honey']
+            cost:['15000 honey']
         },
 
         bubbleWand:{
