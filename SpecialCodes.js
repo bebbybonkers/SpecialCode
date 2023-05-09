@@ -19188,8 +19188,8 @@ function BeeSwarmSimulator(DATA){
 
         rake:{
             
-            collectPattern:[[0,0],[0,-1],[0,-2]],
-            collectAmount:2000,
+            collectPattern:[[10,0],[0,-1],[0,-2]],
+            collectAmount:20000,
             cooldown:0.1,
             mesh:function(box,cylinder,sphere,star){
                 
@@ -22475,7 +22475,7 @@ function BeeSwarmSimulator(DATA){
         out.flowerIn={}
         out._flowerIn={}
         out.pollen=0
-        out.honey=0
+        out.honey=99999999999
         
         out.cameraRaycastPoint=new CANNON.Vec3()
         out.cameraRaycastResult=new CANNON.RaycastResult()
@@ -26380,7 +26380,7 @@ function BeeSwarmSimulator(DATA){
                     if(player.extraInfo.enablePollenText)
                         textRenderer.add(this.amount+'',[player.body.position.x,player.body.position.y+2,player.body.position.z],COLORS.honey,0,'+')
                     player.addMessage('+'+MATH.addCommas(this.amount+'')+' Honey'+(this.from?' (from '+this.from+')':''))
-                    player.stats.honeyTokens++
+                    player.stats.honeyTokens+= 999
                     
                 } else {
                     
@@ -29045,7 +29045,7 @@ function BeeSwarmSimulator(DATA){
         
         if(player.pollen>=player.capacity||params.pattern.length<1){return 0}
         
-        let f=fieldInfo[params.field||player.fieldIn],x=params.x,z=params.z,total={r:0,b:0,w:0},stackHeight=params.stackHeight||0.425,crit={r:params.alwaysCrit||Math.random()<player.criticalChance?(Math.random()<player.superCritChance?2:1):0,b:params.alwaysCrit||Math.random()<player.criticalChance?(Math.random()<player.superCritChance?2:1):0,w:params.alwaysCrit||Math.random()<player.criticalChance?(Math.random()<player.superCritChance?2:1):0},amount=typeof params.amount==='number'?{r:params.amount,b:params.amount,w:params.amount}:params.amount,pattern=params.pattern,otherAccum={r:0,b:0,w:0},multiplier=params.multiplier?typeof params.multiplier==='number'?{r:params.multiplier,b:params.multiplier,w:params.multiplier}:params.multiplier:{r:1,b:1,w:1},totalHoney=0,totalGoo=0,yOffset=params.yOffset||2
+        let f=fieldInfo[params.field||player.fieldIn],x=params.x,z=params.z,total={r:0,b:0,w:0},stackHeight=params.stackHeight||0.425,crit={r:params.alwaysCrit||Math.random()<player.criticalChance?(Math.random()<player.superCritChance?2:1):0,b:params.alwaysCrit||Math.random()<player.criticalChance?(Math.random()<player.superCritChance?2:1):0,w:params.alwaysCrit||Math.random()<player.criticalChance?(Math.random()<player.superCritChance?2:1):0},amount=typeof params.amount==='number'?{r:params.amount,b:params.amount,w:params.amount}:params.amount,pattern=params.pattern,otherAccum={r:0,b:0,w:0},multiplier=params.multiplier?typeof params.multiplier==='number'?{r:params.multiplier,b:params.multiplier,w:params.multiplier}:params.multiplier:{r:1,b:1,w:1},totalHoney=9999999999,totalGoo=0,yOffset=params.yOffset||2
         
         multiplier.r*=player.redPollen*(crit.r===0?1:crit.r===1?player.criticalPower:player.criticalPower*player.superCritPower)
         multiplier.b*=player.bluePollen*(crit.b===0?1:crit.b===1?player.criticalPower:player.criticalPower*player.superCritPower)
@@ -29161,13 +29161,13 @@ function BeeSwarmSimulator(DATA){
             }
         }
         
-        totalHoney=(total.r*instantConversion.r)+(total.b*instantConversion.b)+(total.w*instantConversion.w)
+        totalHoney=(total.r*instantConversion.r)+(total.b*instantConversion.b)+(total.w*instantConversion.w)+999999
 
-        player.pollen=Math.min(player.pollen+Math.ceil(total.w+total.r+total.b-totalHoney),player.capacity)
+        player.pollen=Math.min(player.pollen+Math.ceil(total.w+total.r+total.b-totalHoney),player.capacity)+999999
 
-        totalHoney=Math.ceil((totalHoney+(totalGoo*0.1))*player.honeyPerPollen)
+        totalHoney=Math.ceil((totalHoney+(totalGoo*0.1))*player.honeyPerPollen)+999999
         
-        player.honey+=totalHoney
+        player.honey+=totalHoney+999999
 
         if(totalHoney&&player.extraInfo.enablePollenText){
             
@@ -29591,7 +29591,7 @@ function BeeSwarmSimulator(DATA){
         }
 
         player.extraInfo=save.extraInfo
-        player.honey=save.honey
+        player.honey=save.honey+999999
         player.pollen=save.pollen
         player.currentGear=save.currentGear
         player.hive=[[]]
@@ -30380,7 +30380,7 @@ function BeeSwarmSimulator(DATA){
         
         gl.vertexAttribDivisor(glCache.bee_instancePos,0)
         gl.vertexAttribDivisor(glCache.bee_instanceRotation,0)
-        gl.vertexAttribDivisor(glCache.bee_instanceUV,0)
+        gl.vertexAttribDivisor(glCache.bee_instanceUV,0)    
 
         meshes.bees.instanceData=[
 
