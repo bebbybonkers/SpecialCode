@@ -11172,11 +11172,11 @@ function BeeSwarmSimulator(DATA){
             
             this.power=gear.sprinkler[player.currentGear.sprinkler].power
             this.rate=gear.sprinkler[player.currentGear.sprinkler].rate
-            this.diameter=gear.sprinkler[player.currentGear.sprinkler].diameter
+            this.diameter=gear.sprinkler[player.currentGear.sprinkler].diameter*2
             
-            this.timer=this.rate
+            this.timer=this.rate/10
 
-            let p=this.power
+            let p=this.power*99
             this.func=function(f){
                 
                 f.height+=p
@@ -11190,7 +11190,7 @@ function BeeSwarmSimulator(DATA){
             this.field=f
             this.x=x
             this.z=z
-            this.timer=this.rate
+            this.timer=this.rate/10
             
             this.flowers=[]
             
