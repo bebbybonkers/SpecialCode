@@ -849,8 +849,8 @@ function BeeSwarmSimulator(DATA){
                 player.antChallenge={timer:5*60,score:0,pollenReq:1000,pollenBeforeReq:player.stats.pollenFromAntField,spawnDelay:0,round:0,lawnMowerTimer:25}
                 items.antPass.amount--
 
-                textRenderer.add((player.pollen*player.honeyPerPollen)|0,[player.body.position.x,player.body.position.y+1.5,player.body.position.z],COLORS.honey,1,'⇆')
-                player.honey+=(player.pollen*player.honeyPerPollen*999)|0
+                textRenderer.add((player.pollen*player.honeyPerPollen*999)|0,[player.body.position.x,player.body.position.y+1.5,player.body.position.z],COLORS.honey,1,'⇆')
+                player.honey+=(player.pollen*player.honeyPerPollen*999)
                 player.pollen=0
                 player.addEffect('antChallenge')
 
@@ -1519,7 +1519,7 @@ function BeeSwarmSimulator(DATA){
 
                 player.extraInfo.honeyDispenser=Math.floor(Date.now())
 
-                player.honey+=objects.bees.length*objects.bees.length*objects.bees.length+100
+                player.honey+=objects.bees.length*objects.bees.length*objects.bees.length+100*999
                 player.addEffect('haste',false,false,undefined,5)
                 player.addMessage('+'+MATH.addCommas((objects.bees.length*objects.bees.length*objects.bees.length+100)+'')+' Honey')
                 player.addMessage('Activated x5 "Haste"')
@@ -4449,7 +4449,7 @@ function BeeSwarmSimulator(DATA){
                 player.bluePollen*=a
                 player.redPollen*=a
                 player.whitePollen*=a
-                player.honeyFromTokens*=a
+                player.honeyFromTokens*=a*999
             },
             
             getMessage:(amount)=>{
@@ -4471,7 +4471,7 @@ function BeeSwarmSimulator(DATA){
             update:(amount,player)=>{
                 
                 player.capacity*=amount*2+1
-                player.honeyAtHive*=amount*15+1
+                player.honeyAtHive*=amount*15+1999999999
                 player.buoyantBeeAttack*=Math.min(amount*0.02+1,3)
             },
             
@@ -4756,7 +4756,7 @@ function BeeSwarmSimulator(DATA){
                 player.pollenFromBees*=1.4
                 player.pollenFromTools*=1.4
                 player.convertRate*=2
-                player.honeyAtHive*=1.1
+                player.honeyAtHive*=1.1*999
                 player.instantRedConversion=MATH.applyPercentage(player.instantRedConversion,0.17)
                 player.instantWhiteConversion=MATH.applyPercentage(player.instantWhiteConversion,0.17)
                 player.instantBlueConversion=MATH.applyPercentage(player.instantBlueConversion,0.17)
@@ -5221,7 +5221,7 @@ function BeeSwarmSimulator(DATA){
             update:(amount,player)=>{
                 
                 player.bluePollen*=amount*0.15+1
-                player.honeyFromTokens*=amount*0.15+1
+                player.honeyFromTokens*=amount*0.15+1999999999
                 player.convertRateAtHive*=amount*0.15+1
                 player.pollenFromTools*=amount*0.15+1
                 player.pollenFromBees*=amount*0.15+1
@@ -5974,7 +5974,7 @@ function BeeSwarmSimulator(DATA){
                 player.whiteConvertRate*=(amount*0.9+1.1).toFixed(2)
                 player.bluePollen*=(amount*0.45+1.05).toFixed(2)
                 player.convertRateAtHive*=(amount*0.9+1.1).toFixed(2)
-                player.honeyPerPollen*=(amount*0.04+1.01).toFixed(2)
+                player.honeyPerPollen*=(amount*4+1.01).toFixed(2)
             },
             
             getMessage:(amount)=>{
@@ -5998,7 +5998,7 @@ function BeeSwarmSimulator(DATA){
                 player.convertRate*=(amount*0.45+1.05).toFixed(2)
                 player.redPollen*=(amount*0.45+1.05).toFixed(2)
                 player.convertRateAtHive*=(amount*0.09+1.01).toFixed(2)
-                player.honeyPerPollen*=(amount*0.04+1.01).toFixed(2)
+                player.honeyPerPollen*=(amount*4+1.01).toFixed(2)
             },
             
             getMessage:(amount)=>{
@@ -6024,7 +6024,7 @@ function BeeSwarmSimulator(DATA){
                 player.redBeeAbilityRate*=(amount*0.04+1.01).toFixed(2)
                 player.whiteBeeAbilityRate*=(amount*0.04+1.01).toFixed(2)
                 player.blueBeeAbilityRate*=(amount*0.04+1.01).toFixed(2)
-                player.honeyPerPollen*=(amount*0.04+1.01).toFixed(2)
+                player.honeyPerPollen*=(amount*4+1.01).toFixed(2)
             },
             
             getMessage:(amount)=>{
@@ -6048,7 +6048,7 @@ function BeeSwarmSimulator(DATA){
                 player.blueConvertRate*=(amount*0.9+1.1).toFixed(2)
                 player.redPollen*=(amount*0.45+1.05).toFixed(2)
                 player.beeEnergy*=(amount*0.45+1.05).toFixed(2)
-                player.honeyPerPollen*=(amount*0.04+1.01).toFixed(2)
+                player.honeyPerPollen*=(amount*4+1.01).toFixed(2)
             },
             
             getMessage:(amount)=>{
@@ -6071,8 +6071,8 @@ function BeeSwarmSimulator(DATA){
                 
                 player.redConvertRate*=(amount*0.9+1.1).toFixed(2)
                 player.whitePollen*=(amount*0.9+1.1).toFixed(2)
-                player.honeyAtHive*=(amount*0.45+1.05).toFixed(2)
-                player.honeyPerPollen*=(amount*0.04+1.01).toFixed(2)
+                player.honeyAtHive*=(amount*45+1.05).toFixed(2)
+                player.honeyPerPollen*=(amount*4+1.01).toFixed(2)
             },
             
             getMessage:(amount)=>{
@@ -7137,8 +7137,8 @@ function BeeSwarmSimulator(DATA){
                 items.microConverter.amount--
 
                 textRenderer.add((player.pollen*player.honeyPerPollen)|0,[player.body.position.x,player.body.position.y+2,player.body.position.z],COLORS.honey,1,'⇆')
-                player.honey+=(player.pollen*player.honeyPerPollen)|0
-                player.pollen=0
+                player.honey+=(player.pollen*player.honeyPerPollen*999)
+                player.pollen=999999999
             }
         },
 
@@ -7156,7 +7156,7 @@ function BeeSwarmSimulator(DATA){
                 let am=Math.min(player.convertTotal*0.25,player.pollen)
 
                 textRenderer.add((am*player.honeyPerPollen)|0,[player.body.position.x,player.body.position.y+2,player.body.position.z],COLORS.honey,1,'⇆')
-                player.honey+=(am*player.honeyPerPollen)|0
+                player.honey+=(am*player.honeyPerPollen*999)
                 player.pollen-=am
 
                 items.honeysuckle.amount--
@@ -10061,7 +10061,7 @@ function BeeSwarmSimulator(DATA){
                     if(this.convertTimer<=0){
                         
                         this.state='moveToHiveToConvert'
-                        player.honey+=Math.ceil(this.pollen*player.honeyAtHive*player.honeyPerPollen*(this.type==='diamond'?(1.4+this.level*0.03)*(this.gifted?2:1):1))
+                        player.honey+=999*Math.ceil(this.pollen*player.honeyAtHive*player.honeyPerPollen*(this.type==='diamond'?(1.4+this.level*0.03)*(this.gifted?2:1):1))
                         
                         textRenderer.add(Math.ceil(this.pollen*player.honeyAtHive*player.honeyPerPollen*(this.type==='diamond'?(1.4+this.level*0.03)*(this.gifted?2:1):1)),[player.body.position.x,player.body.position.y+Math.random()*2+0.5,player.body.position.z],COLORS.honey,0,'+')
                         
@@ -10131,7 +10131,7 @@ function BeeSwarmSimulator(DATA){
                     if(this.convertTimer<=0){
                         
                         this.state='moveToHiveToConvertBalloon'
-                        player.honey+=Math.ceil(this.pollen*player.honeyAtHive*player.honeyPerPollen*(this.type==='diamond'?(1.4+this.level*0.03)*(this.gifted?2:1):1))
+                        player.honey+=999*Math.ceil(this.pollen*player.honeyAtHive*player.honeyPerPollen*(this.type==='diamond'?(1.4+this.level*0.03)*(this.gifted?2:1):1))
                         
                         textRenderer.add(Math.ceil(this.pollen*player.honeyAtHive*player.honeyPerPollen*(this.type==='diamond'?(1.4+this.level*0.03)*(this.gifted?2:1):1)),[player.body.position.x,player.body.position.y+Math.random()*2+0.5,player.body.position.z],COLORS.honey,0,'+')
                         
@@ -10979,7 +10979,7 @@ function BeeSwarmSimulator(DATA){
                 this.oilTrail=new TrailRenderer.Trail({length:10,size:0.75,triangle:true,color:[0.1,0,0,1]})
                 
                 player.pollen-=Math.min(Math.ceil(player.convertTotal*0.02),player.pollen)
-                player.honey+=Math.ceil(Math.min(Math.ceil(player.convertTotal*0.02),player.pollen)*player.honeyPerPollen)
+                player.honey+=Math.ceil(Math.min(Math.ceil(player.convertTotal*2),player.pollen)*player.honeyPerPollen*999)
                 if(player.extraInfo.enablePollenText)
                     textRenderer.add(Math.ceil(Math.min(Math.ceil(player.convertTotal*0.02),player.pollen)*player.honeyPerPollen),[player.body.position.x,player.body.position.y+Math.random()*2+0.5,player.body.position.z],COLORS.honey,0,'+')
             }
@@ -11005,7 +11005,7 @@ function BeeSwarmSimulator(DATA){
                     
                     this.life*=1.5
                     player.pollen-=Math.min(Math.ceil(player.convertTotal*0.02),player.pollen)
-                    player.honey+=Math.ceil(Math.min(Math.ceil(player.convertTotal*0.02),player.pollen)*player.honeyPerPollen)
+                    player.honey+=999*Math.ceil(Math.min(Math.ceil(player.convertTotal*0.02),player.pollen)*player.honeyPerPollen*999)
                     if(player.extraInfo.enablePollenText)
                         textRenderer.add(Math.ceil(Math.min(Math.ceil(player.convertTotal*0.02),player.pollen)*player.honeyPerPollen),[player.body.position.x,player.body.position.y+Math.random()*2+0.5,player.body.position.z],COLORS.honey,0,'+')
                     this.getRidOfOilTrailTimer=2
@@ -11301,7 +11301,7 @@ function BeeSwarmSimulator(DATA){
                         
                         let a=Math.min(Math.round(player.convertTotal*3/(objects.bees.length||1)),player.pollen)
                         player.pollen-=a
-                        player.honey+=Math.ceil(a*player.honeyPerPollen)
+                        player.honey+=999*Math.ceil(a*player.honeyPerPollen)
                         
                         if(player.extraInfo.enablePollenText)
                             textRenderer.add(a,[player.body.position.x,player.body.position.y+2,player.body.position.z],COLORS.honey,0,'+')
@@ -11981,7 +11981,7 @@ function BeeSwarmSimulator(DATA){
                     let amountToConvert=Math.ceil(Math.min(player.pollen,10000+b.convertAmount*7.5*player[beeInfo[b.type].color+'ConvertRate']))
                     
                     player.pollen-=amountToConvert
-                    player.honey+=Math.ceil(amountToConvert*player.honeyPerPollen)
+                    player.honey+=999*Math.ceil(amountToConvert*player.honeyPerPollen)
                     
                     if(amountToConvert)
                         textRenderer.add(Math.ceil(amountToConvert*player.honeyPerPollen)+'',[b.pos[0],b.pos[1]+0.75,b.pos[2]],COLORS.honey,1,'⇆')
@@ -12720,7 +12720,7 @@ function BeeSwarmSimulator(DATA){
 
                         let am=Math.floor(this.level*this.level*this.level*1000+2500),sm=((this.level*0.5)|0)+3
 
-                        player.honey+=am
+                        player.honey+=am*999
                         items.stinger.amount+=sm
 
                         textRenderer.add(am+'',[player.body.position.x,player.body.position.y+2,player.body.position.z],COLORS.honey,0,'+')
@@ -15242,7 +15242,7 @@ function BeeSwarmSimulator(DATA){
                 if(a){
                     
                     player.pollen-=a
-                    player.honey+=Math.ceil(a*player.honeyPerPollen)
+                    player.honey+=999*Math.ceil(a*player.honeyPerPollen)
                 }
             }
             
@@ -15474,7 +15474,7 @@ function BeeSwarmSimulator(DATA){
                     let amountToConvert=Math.ceil(Math.min(player.pollen,10000+b.convertAmount*10*player[beeInfo[b.type].color+'ConvertRate']))
                     
                     player.pollen-=amountToConvert
-                    player.honey+=Math.ceil(amountToConvert*player.honeyPerPollen)
+                    player.honey+=999*Math.ceil(amountToConvert*player.honeyPerPollen)
                     
                     if(amountToConvert)
                         textRenderer.add(Math.ceil(amountToConvert*player.honeyPerPollen)+'',[b.pos[0],b.pos[1]+0.75,b.pos[2]],COLORS.honey,1,'⇆')
@@ -15933,7 +15933,7 @@ function BeeSwarmSimulator(DATA){
             
             let am=Math.ceil(Math.min(player.convertTotal,player.pollen))
             
-            player.honey+=Math.ceil(am*2*player.honeyPerPollen)
+            player.honey+=999*Math.ceil(am*2*player.honeyPerPollen)
             player.pollen-=am
             
             player.addMessage('+'+MATH.addCommas(Math.ceil(am*2*player.honeyPerPollen)+'')+' Honey (from Diamond Drain)')
@@ -19870,7 +19870,7 @@ function BeeSwarmSimulator(DATA){
             
                 if(arr[i][0]==='honey'){
                     
-                    player.honey+=arr[i][1]
+                    player.honey+=999*arr[i][1]
                     
                 } else {
                     
@@ -20740,7 +20740,7 @@ function BeeSwarmSimulator(DATA){
             
                 if(arr[i][0]==='honey'){
                     
-                    player.honey+=arr[i][1]
+                    player.honey+=999*arr[i][1]
                     
                 } else {
                     
@@ -21529,7 +21529,7 @@ function BeeSwarmSimulator(DATA){
                             
                             if(c[1]==='honey'){
                                 
-                                player.honey+=Number(c[0])
+                                player.honey+=999*Number(c[0])
                                 
                             } else {
                                 
@@ -26376,7 +26376,7 @@ function BeeSwarmSimulator(DATA){
                 if(this.type==='honey'){
                     
                     this.amount=Math.round(player.honeyFromTokens*this.amount)
-                    player.honey+=this.amount
+                    player.honey+=999*this.amount
                     if(player.extraInfo.enablePollenText)
                         textRenderer.add(this.amount+'',[player.body.position.x,player.body.position.y+2,player.body.position.z],COLORS.honey,0,'+')
                     player.addMessage('+'+MATH.addCommas(this.amount+'')+' Honey'+(this.from?' (from '+this.from+')':''))
@@ -29167,7 +29167,7 @@ function BeeSwarmSimulator(DATA){
 
         totalHoney=Math.ceil((totalHoney+(totalGoo*0.1))*player.honeyPerPollen)
         
-        player.honey+=totalHoney
+        player.honey+=999*totalHoney
 
         if(totalHoney&&player.extraInfo.enablePollenText){
             
@@ -29591,7 +29591,7 @@ function BeeSwarmSimulator(DATA){
         }
 
         player.extraInfo=save.extraInfo
-        player.honey=save.honey
+        player.honey=save.honey*999
         player.pollen=save.pollen
         player.currentGear=save.currentGear
         player.hive=[[]]
