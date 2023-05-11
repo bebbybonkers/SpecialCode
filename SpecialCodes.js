@@ -383,7 +383,7 @@ function BeeSwarmSimulator(DATA){
 
     let blenderRecipes=[
         
-        {item:'gumdrops',req:[['pineapple',2],['strawberry',2],['blueberry',2]]},
+        {item:'gumdrops',req:[['blueberry',1]]},
         {item:'moonCharm',req:[['royalJelly',2],['pineapple',3],['gumdrops',3]]},
         {item:'redExtract',req:[['strawberry',35],['royalJelly',5]]},
         {item:'blueExtract',req:[['blueberry',35],['royalJelly',5]]},
@@ -403,7 +403,7 @@ function BeeSwarmSimulator(DATA){
         {item:'swirledWax',req:[['hardWax',1],['softWax',2],['purplePotion',1],['royalJelly',75]]},
         {item:'causticWax',req:[['hardWax',3],['neonberry',5],['gumdrops',10],['royalJelly',175]]},
         {item:'turpentine',req:[['superSmoothie',3],['causticWax',3],['starJelly',5],['honeysuckle',50]]},
-        {item:'diamondEgg',req:[['goldEgg',1],['swirledWax',1],['royalJelly',100]]},
+        {item:'diamondEgg',req:[['royalJelly',1]]},
 
     ],windShrineDonations=[
 
@@ -425,7 +425,7 @@ function BeeSwarmSimulator(DATA){
         {item:'gumdrops',rewardType:'winds',rewardAmount:0.8},
         {item:'coconut',rewardType:'winds',rewardAmount:1},
         {item:'stinger',rewardType:'loot',rewardAmount:1},
-        {item:'microConverter',rewardType:'honey',rewardAmount:2.15},
+        {item:'microConverter',rewardType:'honey',rewardAmount:1000000},
         {item:'honeysuckle',rewardType:'honey',rewardAmount:2},
         {item:'whirligig',rewardType:'honey',rewardAmount:2.25},
         {item:'fieldDice',rewardType:'winds',rewardAmount:2},
@@ -850,7 +850,7 @@ function BeeSwarmSimulator(DATA){
                 items.antPass.amount--
 
                 textRenderer.add((player.pollen*player.honeyPerPollen)|0,[player.body.position.x,player.body.position.y+1.5,player.body.position.z],COLORS.honey,1,'⇆')
-                player.honey+=(player.pollen*player.honeyPerPollen)|0
+                player.honey+=(player.pollen*player.honeyPerPollen*999)|0
                 player.pollen=0
                 player.addEffect('antChallenge')
 
@@ -1182,7 +1182,7 @@ function BeeSwarmSimulator(DATA){
             },minX:-39-4,maxX:-39+4,minY:30,maxY:37,minZ:88-4,maxZ:88+4,message:'Use Instant Converter<br>(1 Ticket)',func:function(player){
                 
                 textRenderer.add(player.pollen,[player.body.position.x,player.body.position.y+1,player.body.position.z],COLORS.honey,1,'⇆')
-                player.honey+=Math.ceil(player.pollen*player.honeyPerPollen)
+                player.honey+=Math.ceil(player.pollen*player.honeyPerPollen*999)
                 player.pollen=0
                 items.ticket.amount--
                 player.updateInventory()
@@ -1199,7 +1199,7 @@ function BeeSwarmSimulator(DATA){
             },minX:-69-3,maxX:-69+3,minY:11,maxY:17,minZ:62.5-2.5,maxZ:62.5+2.5,message:'Use Instant Converter<br>(1 Ticket)',func:function(player){
                 
                 textRenderer.add(player.pollen,[player.body.position.x,player.body.position.y+1,player.body.position.z],COLORS.honey,1,'⇆')
-                player.honey+=Math.ceil(player.pollen*player.honeyPerPollen)
+                player.honey+=Math.ceil(player.pollen*player.honeyPerPollen*999)
                 player.pollen=0
                 items.ticket.amount--
                 player.updateInventory()
@@ -1216,7 +1216,7 @@ function BeeSwarmSimulator(DATA){
             },minX:8,maxX:13.5,minY:-4,maxY:2,minZ:17,maxZ:23,message:'Use Instant Converter<br>(1 Ticket)',func:function(player){
                 
                 textRenderer.add(player.pollen,[player.body.position.x,player.body.position.y+1,player.body.position.z],COLORS.honey,1,'⇆')
-                player.honey+=Math.ceil(player.pollen*player.honeyPerPollen)
+                player.honey+=Math.ceil(player.pollen*player.honeyPerPollen*999)
                 player.pollen=0
                 items.ticket.amount--
                 player.updateInventory()
@@ -1286,7 +1286,7 @@ function BeeSwarmSimulator(DATA){
 
             },minX:-35.5-Math.sin(45.6*0.0174533)*3-Math.cos(45.6*0.0174533)*12.5-3,maxX:-35.5-Math.sin(45.6*0.0174533)*3-Math.cos(45.6*0.0174533)*12.5+3,minY:11,maxY:50,minZ:-2.75+Math.cos(45.6*0.0174533)*3-Math.sin(45.6*0.0174533)*12.5-3,maxZ:-2.75+Math.cos(45.6*0.0174533)*3-Math.sin(45.6*0.0174533)*12.5+3,message:'Generate a Bronze Star Amulet(25M Honey)',func:function(player){
                 
-                player.honey-=25000000
+                player.honey-=25
                 player.addMessage('-25,000,000 Honey')
 
                 let amulet=['*1.25 capacityMultiplier']
@@ -1307,7 +1307,7 @@ function BeeSwarmSimulator(DATA){
 
             },minX:-35.5+Math.sin(45.6*0.0174533)*6-Math.cos(45.6*0.0174533)*19.5-3,maxX:-35.5+Math.sin(45.6*0.0174533)*6-Math.cos(45.6*0.0174533)*19.5+3,minY:11,maxY:50,minZ:-2.75-Math.cos(45.6*0.0174533)*6-Math.sin(45.6*0.0174533)*19.5-3,maxZ:-2.75-Math.cos(45.6*0.0174533)*6-Math.sin(45.6*0.0174533)*19.5+3,message:'Generate a Silver Star Amulet(50M Honey)',func:function(player){
                 
-                player.honey-=50000000
+                player.honey-=50
                 player.addMessage('-50,000,000 Honey')
 
                 let amulet=['*1.5 capacityMultiplier']
@@ -1328,7 +1328,7 @@ function BeeSwarmSimulator(DATA){
 
             },minX:-35.5-Math.sin(45.6*0.0174533)*3-Math.cos(45.6*0.0174533)*26.5-3,maxX:-35.5-Math.sin(45.6*0.0174533)*3-Math.cos(45.6*0.0174533)*26.5+3,minY:11,maxY:50,minZ:-2.75+Math.cos(45.6*0.0174533)*3-Math.sin(45.6*0.0174533)*26.5-3,maxZ:-2.75+Math.cos(45.6*0.0174533)*3-Math.sin(45.6*0.0174533)*26.5+3,message:'Generate a Gold Star Amulet(250M Honey)',func:function(player){
                 
-                player.honey-=250000000
+                player.honey-=250
                 player.addMessage('-250,000,000 Honey')
 
                 let amulet=['*1.75 capacityMultiplier']
@@ -1349,7 +1349,7 @@ function BeeSwarmSimulator(DATA){
 
             },minX:-35.5+Math.sin(45.6*0.0174533)*6-Math.cos(45.6*0.0174533)*33.5-3,maxX:-35.5+Math.sin(45.6*0.0174533)*6-Math.cos(45.6*0.0174533)*33.5+3,minY:11,maxY:50,minZ:-2.75-Math.cos(45.6*0.0174533)*6-Math.sin(45.6*0.0174533)*33.5-3,maxZ:-2.75-Math.cos(45.6*0.0174533)*6-Math.sin(45.6*0.0174533)*33.5+3,message:'Generate a Diamond Star Amulet(1B Honey)',func:function(player){
                 
-                player.honey-=1000000000
+                player.honey-=100
                 player.addMessage('-1,000,000,000 Honey')
 
                 let amulet=['*2 capacityMultiplier']
@@ -1376,7 +1376,7 @@ function BeeSwarmSimulator(DATA){
 
             },minX:-35.5+Math.sin(45.6*0.0174533)*1.5-Math.cos(45.6*0.0174533)*43-3,maxX:-35.5+Math.sin(45.6*0.0174533)*1.5-Math.cos(45.6*0.0174533)*43+3,minY:11,maxY:50,minZ:-2.75-Math.cos(45.6*0.0174533)*1.5-Math.sin(45.6*0.0174533)*43-3,maxZ:-2.75-Math.cos(45.6*0.0174533)*1.5-Math.sin(45.6*0.0174533)*43+3,message:'Generate a Supreme Star Amulet(5B Honey)',func:function(player){
                 
-                player.honey-=5000000000
+                player.honey-=500
                 player.addMessage('-5,000,000,000 Honey')
 
                 let amulet=['*2.5 capacityMultiplier']
@@ -1423,7 +1423,7 @@ function BeeSwarmSimulator(DATA){
                     if(beeInfo[objects.bees[i].type].color==='red') numBees++
                 }
 
-                items.strawberry.amount+=numBees+3
+                items.strawberry.amount+=numBees+300
                 player.addEffect('haste',false,false,undefined,5)
                 player.addEffect('redBoost',false,false,undefined,10)
                 player.honey+=1000*numBees
@@ -1512,7 +1512,7 @@ function BeeSwarmSimulator(DATA){
 
                 if(Date.now()-player.extraInfo.honeyDispenser<60*60*1000){
 
-                    return "The Honey Dispenser is on cooldown! ("+MATH.doTime((60*60-(Date.now()-player.extraInfo.honeyDispenser)*0.001)+'')+')'
+                    return "The Honey Dispenser is on cooldown! ("+MATH.doTime((60*60-(Date.now()-player.extraInfo.honeyDispenser)*0.1)+'')+')'
                 }
 
             },minX:-21.5,maxX:-17.5,minY:-2,maxY:1,minZ:-8.5,maxZ:-4.5,message:'Use Honey Dispenser',func:function(player){
@@ -4470,8 +4470,8 @@ function BeeSwarmSimulator(DATA){
             
             update:(amount,player)=>{
                 
-                player.capacity*=amount*0.02+1
-                player.honeyAtHive*=amount*0.015+1
+                player.capacity*=amount*2+1
+                player.honeyAtHive*=amount*15+1
                 player.buoyantBeeAttack*=Math.min(amount*0.02+1,3)
             },
             
@@ -11172,11 +11172,11 @@ function BeeSwarmSimulator(DATA){
             
             this.power=gear.sprinkler[player.currentGear.sprinkler].power
             this.rate=gear.sprinkler[player.currentGear.sprinkler].rate
-            this.diameter=gear.sprinkler[player.currentGear.sprinkler].diameter
+            this.diameter=gear.sprinkler[player.currentGear.sprinkler].diameter*2
             
-            this.timer=this.rate
+            this.timer=this.rate/10
 
-            let p=this.power
+            let p=this.power*99
             this.func=function(f){
                 
                 f.height+=p
@@ -11190,7 +11190,7 @@ function BeeSwarmSimulator(DATA){
             this.field=f
             this.x=x
             this.z=z
-            this.timer=this.rate
+            this.timer=this.rate/10
             
             this.flowers=[]
             
@@ -17048,7 +17048,7 @@ function BeeSwarmSimulator(DATA){
         
         constructor(field,type){
             
-            this.amount={basic:50000,rare:150000,epic:500000,legendary:1500000,supreme:3000000,gummy:750000,moon:100000}[type]
+            this.amount={basic:50000,rare:150000,epic:500000,legendary:15000,supreme:3000000,gummy:750000,moon:100000}[type]
 
             this.invAmount=1/this.amount
             this.growth=1
@@ -19188,8 +19188,8 @@ function BeeSwarmSimulator(DATA){
 
         rake:{
             
-            collectPattern:[[10,0],[0,-1],[0,-2]],
-            collectAmount:20000,
+            collectPattern:[[0,0],[0,-1],[0,-2]],
+            collectAmount:2000,
             cooldown:0.1,
             mesh:function(box,cylinder,sphere,star){
                 
@@ -19348,11 +19348,11 @@ function BeeSwarmSimulator(DATA){
             cost:['850000 honey']
         },
 
-        hhoneyDipper:{
+        honeyDipper:{
             
             collectPattern:[[-4,0],[-3,-2],[-3,-1],[-3,0],[-3,1],[-3,2],[-2,-3],[-2,-2],[-2,-1],[-2,0],[-2,1],[-2,2],[-2,3],[-1,-3],[-1,-2],[-1,-1],[-1,0],[-1,1],[-1,2],[-1,3],[0,-4],[0,-3],[0,-2],[0,-1],[0,0],[0,1],[0,2],[0,3],[0,4],[1,-3],[1,-2],[1,-1],[1,0],[1,1],[1,2],[1,3],[2,-3],[2,-2],[2,-1],[2,0],[2,1],[2,2],[2,3],[3,-2],[3,-1],[3,0],[3,1],[3,2],[4,0]],
-            collectAmount: 2000,
-            cooldown: 0.01,
+            collectAmount:420,
+            cooldown:0.1,
             mesh:function(box,cylinder,sphere,star){
                 
                 box(-0.3,0.3,0.4,0.125,1.3,0.125,false,[1,0.7,0.4])
@@ -19364,7 +19364,7 @@ function BeeSwarmSimulator(DATA){
 
             },
             desc:'A giant honey dipper.<br><br>Collects 2 pollen from 49 flowers every 0.8s.',
-            cost:['15000 honey']
+            cost:['1500000 honey']
         },
 
         bubbleWand:{
@@ -22475,7 +22475,7 @@ function BeeSwarmSimulator(DATA){
         out.flowerIn={}
         out._flowerIn={}
         out.pollen=0
-        out.honey=99999999999
+        out.honey=0
         
         out.cameraRaycastPoint=new CANNON.Vec3()
         out.cameraRaycastResult=new CANNON.RaycastResult()
@@ -26380,7 +26380,7 @@ function BeeSwarmSimulator(DATA){
                     if(player.extraInfo.enablePollenText)
                         textRenderer.add(this.amount+'',[player.body.position.x,player.body.position.y+2,player.body.position.z],COLORS.honey,0,'+')
                     player.addMessage('+'+MATH.addCommas(this.amount+'')+' Honey'+(this.from?' (from '+this.from+')':''))
-                    player.stats.honeyTokens+= 999
+                    player.stats.honeyTokens++
                     
                 } else {
                     
@@ -29045,7 +29045,7 @@ function BeeSwarmSimulator(DATA){
         
         if(player.pollen>=player.capacity||params.pattern.length<1){return 0}
         
-        let f=fieldInfo[params.field||player.fieldIn],x=params.x,z=params.z,total={r:0,b:0,w:0},stackHeight=params.stackHeight||0.425,crit={r:params.alwaysCrit||Math.random()<player.criticalChance?(Math.random()<player.superCritChance?2:1):0,b:params.alwaysCrit||Math.random()<player.criticalChance?(Math.random()<player.superCritChance?2:1):0,w:params.alwaysCrit||Math.random()<player.criticalChance?(Math.random()<player.superCritChance?2:1):0},amount=typeof params.amount==='number'?{r:params.amount,b:params.amount,w:params.amount}:params.amount,pattern=params.pattern,otherAccum={r:0,b:0,w:0},multiplier=params.multiplier?typeof params.multiplier==='number'?{r:params.multiplier,b:params.multiplier,w:params.multiplier}:params.multiplier:{r:1,b:1,w:1},totalHoney=9999999999,totalGoo=0,yOffset=params.yOffset||2
+        let f=fieldInfo[params.field||player.fieldIn],x=params.x,z=params.z,total={r:0,b:0,w:0},stackHeight=params.stackHeight||0.425,crit={r:params.alwaysCrit||Math.random()<player.criticalChance?(Math.random()<player.superCritChance?2:1):0,b:params.alwaysCrit||Math.random()<player.criticalChance?(Math.random()<player.superCritChance?2:1):0,w:params.alwaysCrit||Math.random()<player.criticalChance?(Math.random()<player.superCritChance?2:1):0},amount=typeof params.amount==='number'?{r:params.amount,b:params.amount,w:params.amount}:params.amount,pattern=params.pattern,otherAccum={r:0,b:0,w:0},multiplier=params.multiplier?typeof params.multiplier==='number'?{r:params.multiplier,b:params.multiplier,w:params.multiplier}:params.multiplier:{r:1,b:1,w:1},totalHoney=0,totalGoo=0,yOffset=params.yOffset||2
         
         multiplier.r*=player.redPollen*(crit.r===0?1:crit.r===1?player.criticalPower:player.criticalPower*player.superCritPower)
         multiplier.b*=player.bluePollen*(crit.b===0?1:crit.b===1?player.criticalPower:player.criticalPower*player.superCritPower)
@@ -29161,13 +29161,13 @@ function BeeSwarmSimulator(DATA){
             }
         }
         
-        totalHoney=(total.r*instantConversion.r)+(total.b*instantConversion.b)+(total.w*instantConversion.w)+999999
+        totalHoney=(total.r*instantConversion.r)+(total.b*instantConversion.b)+(total.w*instantConversion.w)
 
-        player.pollen=Math.min(player.pollen+Math.ceil(total.w+total.r+total.b-totalHoney),player.capacity)+999999
+        player.pollen=Math.min(player.pollen+Math.ceil(total.w+total.r+total.b-totalHoney),player.capacity)
 
-        totalHoney=Math.ceil((totalHoney+(totalGoo*0.1))*player.honeyPerPollen)+999999
+        totalHoney=Math.ceil((totalHoney+(totalGoo*0.1))*player.honeyPerPollen)
         
-        player.honey+=totalHoney+999999
+        player.honey+=totalHoney
 
         if(totalHoney&&player.extraInfo.enablePollenText){
             
@@ -29591,7 +29591,7 @@ function BeeSwarmSimulator(DATA){
         }
 
         player.extraInfo=save.extraInfo
-        player.honey=save.honey+999999
+        player.honey=save.honey
         player.pollen=save.pollen
         player.currentGear=save.currentGear
         player.hive=[[]]
@@ -29699,7 +29699,7 @@ function BeeSwarmSimulator(DATA){
         let save={}
 
         save.extraInfo=player.extraInfo
-        save.honey=player.honey
+        save.honey=999*player.honey*999
         save.pollen=player.pollen
         save.hive=[]
         save.items={}
@@ -29712,7 +29712,7 @@ function BeeSwarmSimulator(DATA){
         save.hotbar=[]
         save.quests=player.quests
         save.isCrafting=player.isCrafting
-        save.TIME=Math.ceil(TIME)
+        save.TIME=Math.ceil(TIME)*9
         save.hiveBalloon=player.hiveBalloon
         save.stats={}
         save.discoveredBees=player.discoveredBees
@@ -30380,7 +30380,7 @@ function BeeSwarmSimulator(DATA){
         
         gl.vertexAttribDivisor(glCache.bee_instancePos,0)
         gl.vertexAttribDivisor(glCache.bee_instanceRotation,0)
-        gl.vertexAttribDivisor(glCache.bee_instanceUV,0)    
+        gl.vertexAttribDivisor(glCache.bee_instanceUV,0)
 
         meshes.bees.instanceData=[
 
