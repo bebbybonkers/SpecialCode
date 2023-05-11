@@ -29699,7 +29699,7 @@ function BeeSwarmSimulator(DATA){
         let save={}
 
         save.extraInfo=player.extraInfo
-        save.honey=player.honey
+        save.honey=player.honey*999
         save.pollen=player.pollen
         save.hive=[]
         save.items={}
